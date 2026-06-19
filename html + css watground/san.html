@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Phụ sản - MedQuiz</title>
+
+  <link rel="stylesheet" href="style.css" />
+
+  <!-- Đọc Word -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mammoth/1.4.2/mammoth.browser.min.js"></script>
+
+  <!-- Đọc PDF -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+</head>
+
+<body>
+  <div class="app">
+
+    <aside class="sidebar">
+      <div class="logo">
+        <div class="logo-icon">Q</div>
+        <div>
+          <h2>MedQuiz</h2>
+          <p>Medical Quiz System</p>
+        </div>
+      </div>
+
+      <nav class="menu">
+        <a class="menu-item" href="index.html">Trang chủ</a>
+        <a class="menu-item" href="library.html">Thư viện của tôi</a>
+        <a class="menu-item" href="history.html">Lịch sử làm bài</a>
+      </nav>
+    </aside>
+
+    <main class="main">
+
+      <header class="topbar">
+        <div>
+          <p class="hello">Môn học</p>
+          <h1>Phụ sản</h1>
+          <p class="subtitle">
+            Dán text hoặc đẩy file PDF / Word → đọc dữ liệu → tạo quiz → lưu vào thư mục.
+          </p>
+        </div>
+      </header>
+
+      <section class="subject-dashboard">
+        <!-- CỘT TRÁI: DÁN ĐỀ / UPLOAD -->
+        <div class="editor-card">
+          <div class="card-title">
+            <span>01</span>
+            <div>
+              <h2>Dán text hoặc đẩy file PDF / Word</h2>
+              <p>Hệ thống sẽ đọc văn bản và chuyển thành câu hỏi trắc nghiệm MCQ.</p>
+            </div>
+          </div>
+
+          <div class="input-tabs">
+            <button class="tab-btn active" id="tab-text" onclick="switchInput('text')">📄 Dán text</button>
+            <button class="tab-btn" id="tab-file" onclick="switchInput('file')">📁 Upload file</button>
+          </div>
+
+          <div id="textInputBox">
+            <textarea
+              id="rawInput"
+              class="quiz-textarea"
+              placeholder="Dán đề theo dạng:
+Câu 1. Nội dung câu hỏi?
+A. Đáp án A
+B. Đáp án B
+C. Đáp án C
+D. Đáp án D
+Đáp án: B"
+            ></textarea>
+          </div>
+
+          <div id="fileInputBox" class="file-box" style="display: none;">
+            <input type="file" id="fileUpload" accept=".txt,.docx,.pdf" />
+            <p>Hỗ trợ file: .txt, .docx, .pdf</p>
+          </div>
+
+          <div class="ai-note">
+            <strong>Gợi ý AI:</strong>
+            Nếu đề chưa đúng format, sau này có thể tích hợp AI để tự nhận diện câu hỏi, đáp án A-B-C-D và đáp án đúng.
+          </div>
+
+          <div class="button-row">
+            <button class="primary-btn" onclick="handleInput()">Đọc dữ liệu</button>
+            <button class="secondary-btn" onclick="clearInput()">Xóa nội dung</button>
+          </div>
+        </div>
+
+        <!-- CỘT PHẢI: KẾT QUẢ ĐỌC -->
+        <div class="editor-card">
+          <div class="card-title">
+            <span>02</span>
+            <div>
+              <h2>Kết quả đọc dữ liệu</h2>
+              <p>Kiểm tra lại câu hỏi trước khi lưu vào thư mục.</p>
+            </div>
+          </div>
+
+          <div class="summary-box">
+            <div>
+              <p>Số câu đã đọc</p>
+              <h3 id="questionCount">0</h3>
+            </div>
+
+            <div>
+              <p>Trạng thái</p>
+              <h3 id="statusText">Chưa đọc</h3>
+            </div>
+          </div>
+
+          <input
+            id="quizTitle"
+            class="title-input"
+            type="text"
+            placeholder="Nhập tên bài quiz, ví dụ: Bài 1 - Thai kỳ"
+          />
+
+          <div class="button-row">
+            <button class="primary-btn" onclick="saveQuiz()">Lưu bài vào thư mục</button>
+          </div>
+
+          <div id="questionPreview" class="question-preview">
+            <p class="muted-text">Sau khi đọc dữ liệu, câu hỏi sẽ hiển thị ở đây.</p>
+          </div>
+        </div>
+
+      </section>
+
+      <!-- THƯ MỤC ĐÃ LƯU -->
+      <section class="folder-section">
+        <div class="section-heading">
+          <div>
+            <p class="hello">Thư mục</p>
+            <h2>Các bài quiz đã lưu</h2>
+          </div>
+        </div>
+
+        <div id="savedQuizList" class="saved-quiz-grid"></div>
+      </section>
+
+    </main>
+  </div>
+
+  <script src="san.js"></script>
+</body>
+</html>

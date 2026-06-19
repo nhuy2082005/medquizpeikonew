@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MedQuiz</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <div class="app">
+
+    <aside class="sidebar">
+      <div class="logo">
+        <div class="logo-icon">Q</div>
+        <div>
+          <h2>MedQuiz</h2>
+          <p>Medical Quiz System</p>
+        </div>
+      </div>
+
+      <nav class="menu">
+        <a class="menu-item active" href="index.html">Trang chủ</a>
+        <a class="menu-item" href="library.html">Thư viện của tôi</a>
+        <a class="menu-item" href="history.html">Lịch sử làm bài</a>
+      </nav>
+
+      <div class="user-card">
+        <div class="avatar">NY</div>
+        <div>
+          <strong>Như Ý</strong>
+          <p>Student Basic</p>
+        </div>
+      </div>
+    </aside>
+
+    <main class="main">
+      <header class="topbar">
+        <div>
+          <p class="hello">Xin chào, Như Ý 👋</p>
+          <h1>Hôm nay bạn muốn luyện đề gì?</h1>
+        </div>
+
+        <button class="primary-btn">+ Tạo đề mới</button>
+      </header>
+
+      <section class="hero">
+        <div class="hero-tabs">
+          <button class="hero-tab">✏️ Tạo mới</button>
+          <button class="hero-tab active">🔍 Tìm kiếm</button>
+          <button class="hero-tab">⬆️ Tải lên</button>
+        </div>
+
+        <div class="search-box">
+          <input id="searchInput" type="text" placeholder="Tìm kiếm bài quiz, môn học, chủ đề..." />
+          <button onclick="searchQuiz()">🔍</button>
+        </div>
+      </section>
+
+      <section class="section-title">
+        <span></span>
+        <h2>Duyệt tài nguyên học tập</h2>
+        <span></span>
+      </section>
+
+      <section class="folder-grid" id="subjectGrid">
+
+        <a class="folder-card" href="noi.html" data-title="Nội bệnh lý Tim mạch Thận Cơ xương khớp">
+          <div class="folder-icon">🫀</div>
+          <h3>Nội bệnh lý</h3>
+          <p>Tim mạch, thận, cơ xương khớp</p>
+        </a>
+
+        <a class="folder-card" href="ngoai.html" data-title="Ngoại bệnh lý Tiêu hóa Chấn thương Tiết niệu">
+          <div class="folder-icon">🦴</div>
+          <h3>Ngoại bệnh lý</h3>
+          <p>Tiêu hóa, chấn thương, tiết niệu</p>
+        </a>
+
+        <a class="folder-card" href="san.html" data-title="Phụ sản Thai kỳ Chuyển dạ Hậu sản">
+          <div class="folder-icon">🤰</div>
+          <h3>Phụ sản</h3>
+          <p>Thai kỳ, chuyển dạ, hậu sản</p>
+        </a>
+
+        <a class="folder-card" href="nhi.html" data-title="Nhi khoa Sơ sinh Hô hấp Tiêu hóa">
+          <div class="folder-icon">👶</div>
+          <h3>Nhi khoa</h3>
+          <p>Sơ sinh, hô hấp, tiêu hóa</p>
+        </a>
+
+        <a class="folder-card" href="cdha.html" data-title="Chẩn đoán hình ảnh X quang Siêu âm CT MRI">
+          <div class="folder-icon">🩻</div>
+          <h3>Chẩn đoán hình ảnh</h3>
+          <p>X-quang, siêu âm, cấp cứu bụng</p>
+        </a>
+
+        <a class="folder-card" href="thankinh.html" data-title="Thần kinh Sức khỏe tâm thần Phục hồi chức năng">
+          <div class="folder-icon">🧠</div>
+          <h3>Thần kinh - Sức khỏe tâm thần - Phục hồi chức năng</h3>
+          <p>Thần kinh, tâm thần, phục hồi chức năng</p>
+        </a>
+
+      </section>
+    </main>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
